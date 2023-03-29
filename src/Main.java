@@ -13,27 +13,39 @@ public class Main {
         System.out.println("3 - Depósito em conta");
         System.out.println("4 - Saque em conta");
         System.out.println("5 - Encerrar conta");
-        System.out.println("6 - Sair");
+        System.out.println("6 - Transferir valores");
+        System.out.println("7 - Sair");
 
         Scanner opcaoSelecionada = new Scanner(System.in);
         Integer opcao = opcaoSelecionada.nextInt();
 
-        if(opcao==1){
-            banco.abrirConta();
-        }else if(opcao==2){
-            banco.exibirSaldo();
-        }else if(opcao==3){
-            banco.depositar();
-        }else if(opcao==4){
-            banco.sacar();
-        }else if(opcao==5){
-            banco.encerrarConta();
-        }else if(opcao==6){
-            return;
-        }else{
-            System.out.println("Opção inválida");
-        }
 
-        menu(banco);
+         switch (opcao){
+             case 1:
+                 banco.abrirConta();
+                 break;
+             case 2:
+                 banco.exibirSaldo();
+                break;
+             case 3:
+                 banco.depositar();
+                 break;
+             case 4:
+                 banco.sacar();
+                break;
+             case 5:
+                 banco.encerrarConta();
+                 break;
+             case 6:
+                banco.transferir();
+                break;
+            case 7:
+                 return;
+             default:
+                 System.out.println("Opção inválida");
+
+         }
+
+          menu(banco);
     }
 }

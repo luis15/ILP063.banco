@@ -56,6 +56,28 @@ public class Banco {
         }
     }
 
+    public void transferir(){
+        System.out.println("Digite a conta de origem");
+        Integer indiceOrigem = this.obterIndiceConta();
+
+        if(indiceOrigem != -1){
+            System.out.println("Digite a conta de destino");
+            Integer indiceDestino = this.obterIndiceConta();
+
+            if(indiceDestino != -1){
+                System.out.println("Digite o valor da transferência");
+                Scanner obterValores = new Scanner(System.in);
+                Double valor = obterValores.nextDouble();
+                this.contas.get(indiceOrigem).sacar(valor);
+                this.contas.get(indiceDestino).depositar(valor);
+            }else{
+                System.out.println("Conta não localizada");
+            }
+        }else{
+            System.out.println("Conta não localizada");
+        }
+    }
+
     public void encerrarConta(){
         Integer indice = this.obterIndiceConta();
 
@@ -77,7 +99,7 @@ public class Banco {
         }
     }
 
-    public Integer obterIndiceConta(){
+    private Integer obterIndiceConta(){
         System.out.print("Digite o CPF do titular");
         Scanner obterValores = new Scanner(System.in);
         String cpf = obterValores.nextLine();
